@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{{ title }} - Microblog</title>
-    </head>
-    <body>
-        <h1>Hello, {{ user.username }}</h1>
-        <div>
-            {% for post in posts %}
-                <p>{{ post.author.username }} says: <b> {{ post.body }}</b>  </p>
+{% extends "base.html" %}
 
-            {% endfor %}
-        </div>
-    </body>
-</html>
+{% block content %}
+<h1>Hello, {{ user.username }}!</h1>
+<div>
+    {% for post in posts %}
+        <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+    {% else %}
+        <p>Sorry, there are no posts available!</p>
+    {% endfor %}
+</div>
+{% endblock %}
